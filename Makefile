@@ -40,13 +40,3 @@ run-test:
 
 run-ocr:
 	cd backend && go run main.go ocr
-
-psql:
-	docker-compose exec postgres psql -U postgres -d arendt
-
-dump:
-	PGPASSWORD=postgres pg_dump -Fc --no-acl --no-owner -h localhost -p 5432 -U postgres arendt > mydb.dump
-
-dump-data:
-	PGPASSWORD=postgres pg_dump -h localhost -U postgres --data-only --inserts arendt > dump.sql
-	sed -i -e 's/^INSERT INTO public\./INSERT INTO /' dump.sql

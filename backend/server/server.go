@@ -21,7 +21,6 @@ func New() (*Server, error) {
 
 	// Initialize Store
 	s, err := sqlite.New()
-	//s, err := postgres.New()
 	if err != nil {
 		return nil, err
 	}
