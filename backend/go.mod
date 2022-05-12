@@ -9,8 +9,6 @@ require (
 	github.com/lib/pq v1.10.2
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/spf13/cobra v1.1.3
-	golang.org/x/text v0.3.6 // indirect
-	google.golang.org/api v0.48.0 // indirect
 	gorm.io/driver/postgres v1.1.0
 	gorm.io/driver/sqlite v1.1.4
 	gorm.io/gorm v1.21.11

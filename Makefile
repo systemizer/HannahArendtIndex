@@ -9,6 +9,9 @@ builddir:
 build-backend: builddir
 	cd backend && CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build --tags "fts5"  -o ../build/arendt ./
 
+install:
+	cd frontend && npm install
+
 build-frontend: builddir
 	cd frontend && npm run build && cp -r ./build ../build/frontend
 
