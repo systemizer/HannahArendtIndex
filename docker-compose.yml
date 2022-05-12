@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+    postgres:
+        image: postgres:10.5
+        restart: always
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=arendt
+        logging:
+            options:
+                max-size: 10m
+                max-file: "3"
+        ports:
+            - '5432:5432'
+        volumes:
+            - ./postgres-data:/var/lib/postgresql/data
+            - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    postgres2:
+        image: postgres:10.5
+        restart: always
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=arendt
+        logging:
+            options:
+                max-size: 10m
+                max-file: "3"
+        ports:
+            - '5433:5432'
+    pgadmin:
+        container_name: pgadmin4_container
+        image: dpage/pgadmin4
+        restart: always
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@admin.com
+            PGADMIN_DEFAULT_PASSWORD: root
+        ports:
+          - "5050:80"
